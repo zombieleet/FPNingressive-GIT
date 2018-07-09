@@ -1,2 +1,2 @@
 # FPNingressive-GIT
-my slides on versioncontrol system with Git on 7th of July 2018
+my slides on version control system with Git on 7th of July 2018 ( Ingressive campus meetup Federal Polytechnic Nasarawa )
