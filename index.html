@@ -1,0 +1,1011 @@
+<!doctype html>
+<html>
+    <head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>Version Control System With Git</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <link rel="stylesheet" href="overwrite.css"/>
+
+	<!-- Printing and PDF exports -->
+	<script>
+	 var link = document.createElement( 'link' );
+	 link.rel = 'stylesheet';
+	 link.type = 'text/css';
+	 link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+	 document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+    </head>
+    <body>
+	<div class="reveal">
+	    <div class="slides">
+		<section>
+                    <section>
+                        <header> <u> About Me </u> </header>
+                        <ul>
+                            <li>My name is Victory Osikwemhe</li>
+                            <li>Student of Accounting Department</li>
+                            <li>Linux Evangelist</li>
+                            <li>Shell Programming Nerd</li>
+                            <li>Commandline Interface junkie</li>
+                            <li>I mostly programme in Javascript and C </li>
+                            <li>Addicted to coding for the past 7 years now </li>
+                            <li>Unrepented Talkative </li>
+                        </ul>
+                    </section>
+                </section>
+		<section>
+                    <section><header> What is this talk all about ? </header></section>
+                    <section>
+                        <p> Version Control System With </p>
+                        <p> Git </p>
+                    </section>
+                </section>
+                <section>
+                    <section> Version control is all about keeping track of changes that has been made in a file or set of files </section>
+                    <section> Version control systems, has to do with those tools that eases the pain of version control </section>
+                </section>
+                <section>
+                    <section>
+                        <header> <u> Types of Version Control Systems </u> </header>
+                        <ul>
+                            <li>Centralized Version Control System ( CVCS ) </li>
+                            <li>Decentralized/Distributed Version Control System ( DVCS )</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <header> <u> Centralized Version Control System </u> </header>
+                        <ul class="git-cvcs">
+                            <li>Only authorized users are allowed to work on the repository</li>
+                            <li>Repository is located on only one machine</li>
+                            <li>Often, internet connection is needed to work with the repository</li>
+                            <li>It becomes unreliable as the number of users who have access to the repository increase</li>
+                            <li>If the server crashes, it might lead to permanent loss of files if there is no backup</li>
+                        </ul>
+                    </section>
+                    <section data-background-image="cvcs.png" data-background-size="contain"></section>
+                    <section>
+                        <header> <u>Centralized Version Control System Tools</u> </header>
+                        <ul>
+                            <li>Svn ( Subversion ) </li>
+                            <li>CVS</li>
+                        </ul>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <header> <u> Distributed/Decentralized Version Control System </u> </header>
+                        <ul class="git-cvcs">
+                            <li>Repository is not located on a single server</li>
+                            <li>Network connection is not needed to work on the version controlled project</li>
+                            <li>Increase in number of users working on the project does not affect the project</li>
+                            <li>Everyone working on a project have a copy of the repository, backing up is not a problem</li>
+                        </ul>
+                    </section>
+                    <section data-background-image="dvcs.png" data-background-size="contain">
+                    </section>
+                    <section>
+                        <header> <u> Distributed/Decentralized Version Control System Tools</u> </header>
+                        <ul>
+                            <li>Git ( A.K.A The stupid content tracker )</li>
+                            <li>Mercurial</li>
+                            <li>Bazaar</li>
+                            <li>Darcs</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <header> <u> Let's talk about Git </u> </header>
+                        <ul>
+                            <li>Git is prounounced as Geet not jit </li>
+                            <li>Git is not the short form of GITHUB</li>
+                            <li>Git is generally known as the stupid content tracker</li>
+                            <li>Git was actually created by Linus Torvalds to manage the linux kernel ( 2005 )</li>
+                            <li>Git is currently maintained by Junio C Hamano</li>
+                            <li>Git is a distributed version control system tool</li>
+                        </ul>
+                    </section>
+                    <section data-background-image="torvalds.jpg" data-background-size="contain"></section>
+                </section>
+
+                <section>
+                    <header> <u> Terminlogies in Git YOU MUST BE FAMILIAR WITH</u> </header>
+                    <ul>
+                        <li>Working Directory</li>
+                        <li>Repository</li>
+                        <li>Staging/Index Area</li>
+                        <li>Commit</li>
+                        <li>Branching</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <header id="working-directory"> <u> Working Directory </u> </header>
+                    <p> A working directory is a directory been currently version controlled </p>
+                    <section data-markdown>
+                        ```bash
+                        $~/my_project: ls
+                        file1.txt ---------
+                        file2.txt           \_ # Files currently been tracked
+                        file3.txt           /  # for changes by git
+                        file4.txt --------
+
+                        $~/my_project: pwd
+                        my_project   ------ # The working directory that
+                                            # contains files been version controlled
+                        ```
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <header id="repository"> <u> Repository </u> </header>
+                        <p>A magical location where your version controlled contents are stored</p>
+                    </section>
+                    <section>
+                        <header> <u>Local Repository</u> </header>
+                        <p>This are repository that exits within your host computer</p>
+                    </section>
+                    <section>
+                        <header> <u>Remote Repository</u> </header>
+                        <p>This are repository that does not exists on your host computer</p>
+                        <p>Often, network connection is required to connect to this repository</p>
+                    </section>
+                </section>
+                <section>
+                    <header> <u>Staging / Index Area</u> </header>
+                    <p>Tracked contents are placed in this area before been saved ( or <a href="#commit">committed</a> ) to the repository</p>
+                </section>
+                <section>
+                    <header id="commit"> <u>Commit</u> </header>
+                    <p>Commit have to do with saving the changes that occur in your <a href="#working-directory"> working directory </a> </p>
+                </section>
+
+                <section>
+                    <header id="branch"> <u>Branching</u> </header>
+                    <p>This have to do with creating an entire development path</p>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Initializing a git repository
+                        To initialize a git repository is to tell git to recognize the [working directory](#working-directory)
+                        to be version controlled as a git repository
+
+                        * `git init`
+                        * `git init repo_path`
+
+                    </section>
+
+                    <section data-markdown>
+                        ```bash
+                        $ mkdir git_project # create git_project directory
+
+                        $ cd git_project # move into git_project directory
+
+                        $~/git_project: ls  # list all the files in directory
+
+                        $~/git_project: pwd # present working directory
+                        ~/git_project
+
+                        $~/git_project: git init # tell git about this directory
+
+                        $~/git_project: ls -a
+                        .git                     #  where all the magic happens
+
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Tracking a file
+
+                        Whenever a new file is created, git does not know anything about this file, until you
+                        tell it to start tracking this file.
+
+                        * `git add`
+
+                    </section>
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git status # state of the working tree
+                        On branch master
+
+                        ...
+
+                        Untracked files:
+
+                        ...
+
+                        list of files not tracked
+
+                        $~/git_project: git add file_name # start tracking this file
+                        ```
+                    </section>
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git status # state of the working tree
+                        On branch master
+
+                        No commits yet
+
+                        Changes to be commited
+
+                        new file: file_name  # staging area
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### [Commiting](#Commit) Changes
+                        This have to do with telling git to send the tracked content in the staging area
+                        to the [repository](#repository)
+
+                        * `git commit`
+                    </section>
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git commit --message="message to annoate this commit with"
+                        [master (root-commit) ...] annotated message
+                        file changed, insertion made
+                        create mod 100644 file_name
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Commits logs
+                        With git you can also view all your commits logs.
+                        Commits logs shows you a detailed information about the commits you and other developers have made
+
+                        * `git log`
+
+                    </section>
+
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git log
+                        commit sha1sum ( HEAD -> master )
+                        Author: ...
+                        Date: ...
+
+                        commit message
+
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Minimal Commit log
+                        You can also tell git to show a minimal version of the `git log` output
+
+                        ```bash
+                        $~/git_project: git log --oneline
+                        shorten sha1sum
+                        ```
+
+                        ```bash
+                        $~/git_project: git log -3
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Search the log base on some criteria
+                        You can also search the commit log base on some criterias like
+
+                        * Author Name
+                        * Committer Name
+                        * Date of Commit
+                        * greping for contents
+                        * e.t.c
+                    </section>
+
+                    <section data-markdown>
+                        ### Searching by Authors Name
+
+                        ```bash
+                        $~/git_project: git log --author="John Doe"
+                        commit sha1sum ( HEAD pointer )
+                        Author:
+                        Date:
+
+                        commit message
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Searching by Committers Name
+
+                        ```bash
+                        $~/git_project: git log --commiter="Jane Doe"
+                        commit sha1sum ( HEAD pointer )
+                        Author:
+                        Date:
+
+                        commit message
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Date of Commit
+
+                        ```bash
+                        $~/git_project: git log --since="2 hours ago"
+                        commit sha1sum ( HEAD pointer )
+                        Author:
+                        Date:
+
+                        commit message
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Greping for contents
+
+                        ```bash
+                        $~/git_project: git log --grep="Initial commit"
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### [Branch](#branch)
+                        With branching you can create a different development path without messing up
+                        your working directory or repo. Branching is normally used to test out things that might
+                        work or might not work.
+
+                        * `git branch`
+                        * `git checkout -b`
+
+                    </section>
+
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git branch --list # list all branches
+                        * master    # current branch
+                        $~/git_project: git branch my_branch # new branch
+                        $~/git_project: git branch --list
+                        * master # current branch
+                        new_branch_name # newly created branch
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Moving into new branches
+
+                        To start working with the new branch you have to tell git to move away from the current branch
+                        ( master ) to the newly created branch. Any changes made in the newly created branch won't show up
+                        in the master branch. Moving into a new branch in git is called ***checkout***
+                    </section>
+
+                    <section data-markdown>
+                        *** Before Checking out to a new branch ***
+                        ```bash
+                        $~/git_project: git status
+                        On branch master
+                        ....
+                        ```
+
+                        *** move into new branch ***
+                        ```bash
+                        $~/git_project: git checkout my_branch # move into new branch
+                        ```
+                        *** After Checking out to new branch ***
+
+                        ```bash
+                        $~/git_project: git status
+                        On branch my_branch
+                        ...
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Making commits in new branch
+
+                        Commits in new branch will not be visible to other branches
+
+                        ```bash
+                        $~/git_project: git add file_name
+                        $~/git_project: git status
+                        On branch my_branch
+
+                        Changes not staged for commit:
+
+                        ...
+                        ...
+
+                        modified: file_name
+
+                        $~/git_project: git commit --message="commit message"
+
+                        ```
+                    </section>
+
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Checking the difference between two branches
+                        Two branches in a single repository can have different development path
+                        the difference between this branches can be checked
+
+                        * ` git diff `
+                    </section>
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git diff my_branch master
+                        ...
+
+                        --- a/file_name
+                        +++ b/file_name
+
+                        @@@ -1 +1 @@ # -1 means one line was removed, +1 was line inserted
+                        - removed contents are marked with '-'
+                        + added contents are marked with '+'
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Merging two branches
+                        In merging, git actually only copies commits not present in one branch
+                        and apply's those commits into the current branch
+
+                        * ` git merge `
+                        * ` git rebase `
+                        * ` git cherry-pick `
+                    </section>
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git checkout master # move into master branch
+                        $~/git_project: git status
+                        On branch master
+                        ....
+                        $~/git_project: git merge my_branch # incorporates commits that are in my_branch and not in master branch
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Deleting a branch
+                        In situation wereby you no longer need a branch, it is advisable to delete the branch,
+                        but you should make sure you have merged the commits made in that branch to a longelived branch
+
+                        ```bash
+                        $~/git_project: git branch short_lived_branch
+                        $~/git_project: git branch --list
+                        * master
+                        ...
+                        short_lived_branch
+                        $~/git_project: git branch -D short_lived_branch
+                        $~/git_project: git branch --list
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Using a remote repository
+                        Remote repository enhances collaboration
+
+                        ```bash
+                        $~/git_project: git remote add origin https://remote_repo_url.com/project_name # adds the url as a remote repo
+                        $~/git_project: git remote show origin -n
+                        ```
+                        *** pushing to remote repository ***
+
+                        ```bash
+                        $~/git_project: git push origin master
+                        ...
+                        ...
+                        ....
+                        To /remote/repo/name
+                        ...
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Fetching commits from a remote repository
+                        Commits can be fetched from a remote repository in situations were a collaborator updates
+                        the remote repo, they will be need for other collaborators to fetch those changes from the remote repo
+                        to their own local repo
+
+                        ```bash
+                        $~/git_project: git pull origin master
+                        ...
+                        ...
+                        ...
+                        from /remote/repo/name
+                        ```
+
+                    </section>
+
+                    <section data-markdown>
+                        ### Deleting a remote branch
+                        If a remote branch is no longer needed, it is advisable you delete it, but you have to make sure
+                        that all the commits in the remote repo is already fetched into the local repo
+
+                        ```bash
+                        $~/git_project: git branch --remotes
+                        all remote branch will be listed here
+
+                        $~/git_project: git push origin :branch_name
+                        To /repository/url
+                        - [deleted]      branch name
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <header> <u>Undoing Changes</u> </header>
+                        <img data-src="undo.jpg"/>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Reseting Your Changes
+                        Reset helps you to revert back to previous commits.
+                        Resets can be of three types
+
+                        * `git reset`
+                        
+                        * soft  
+                        * mixed
+                        * hard
+                        * merge
+                        * keep
+                    </section>
+                    <section data-markdown>
+                        ### Soft resets
+                        Soft resets only moves the `HEAD` pointer to a previous commit.
+                        * Staging area is not affected
+                        * Working directory/tree is unaffected
+
+
+                        ```bash
+                        $~/git_project: git status
+                        On branch master
+                        ....
+                        Changes to be committed:
+
+                        file1.txt
+                        file2.txt
+                        ```
+
+                    </section>
+
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git log
+                        commit abcdef
+                        ...
+                        commit one
+
+                        commit 123456
+                        ...
+                        commit two
+
+                        commit abcd124
+                        ...
+                        commit three
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git reset --soft HEAD^
+                        $~/git_project: git log
+                        commit 123456
+                        ...
+                        commit two
+
+                        commit abcd124
+                        ...
+                        commit three
+                        $~/git_project: git status
+                        On branch master
+                        ....
+                        Changes to be committed:
+
+                        file1.txt
+                        file2.txt
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Mixed reset
+                        It moves the HEAD pointer to a previous commit without affecting the working tree.
+                        A mixed reset only affects the commited contents and the staging area. It affects the staging area
+                        by unstaging all staged files
+
+                        ```bash
+                        $~/git_project: git status
+                        On branch master
+                        ...
+
+                        Changes to be committed:
+                        files1.txt
+                        files2.txt
+
+                        $~/git_project: git log
+                        commit abcdef
+                        ...
+                        commit one
+
+                        commit 123456
+                        ...
+                        commit two
+
+                        commit abcd124
+                        ...
+                        commit three
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git reset --mixed HEAD^
+                        $~/git_project: git log
+                        commit 123456
+                        ...
+                        commit two
+
+                        commit abcd124
+                        ...
+                        commit three
+                        ```
+
+                        ```bash
+                        $~/git_project: git status
+                        On branch master
+                        ...
+                        Changes not staged for commit:
+                        ...
+                        file1.txt
+                        file2.txt
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Hard Reset
+                        Hard reset changes your working tree, unstages your staged file, and moves your head pointer
+                        to a previous commit. Uncommited changes in your working tree goes missing ( permanently )
+
+                        [![DON'T TRY THIS AT HOME](dont.gif)]()
+                    </section>
+
+                    <section data-markdown>
+                        ```bash
+                        $~/git_project: git reset --hard HEAD^
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Unstaging a staged file
+                        Unstaging a content removes that content from the staging area, the content
+                        will not be represented in any further committs untill it is added back to the staging area
+
+
+                        ```bash
+                        $~/git_project: git reset HEAD -- file_name
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Changing the content of a file
+                        The content of a file can also be changed to represent what it was as of the last time
+                        it was committed
+
+                        ```bash
+                        $~/git_project: git checkout -- file_name
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Reverting a Commit
+                        Reverting a commit is actually carried out when you want to revert the changes a commit introduces
+                        and it does that with a new commit message
+
+                        * `git revert`
+
+                        ```bash
+                        $~/git_project: echo "First Commit" > file.txt
+                        $~/git_project: git add file.txt
+                        $~/git_project: git commit --message="First Commit"
+                        $~/git_project: echo "Second Commit" > file.txt
+                        $~/git_project: git add file.txt
+                        $~/git_project: git commit --message="Second Commit"
+                        $~/git_project: git log --oneline
+                        sha1sum ( HEAD -> master ) Second Commit
+                        sha1sum First Commit
+                        $~/git_project: git revert HEAD
+                        [master 9251901] Commit Message
+                        ....
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Using Reflog to undo changes
+                        Reflog records all changes that occur in a branch. With reflog it is easy
+                        to undo an action
+
+                        * `git reflog`
+                    </section>
+                    <section data-markdown>
+                        ### Using reflog to undo a soft reset
+
+                        ```bash
+                        $~/git_project: git log --oneline
+
+                        sha1sum ( HEAD -> master) third commit
+                        sha1sum second commit
+                        sha1sum first commit
+                        sha1sum initial commit
+
+                        $~/git_project: git reset --soft HEAD~2
+
+                        $~/git_project: git log
+
+                        sha1sum ( HEAD -> master ) first commit
+                        sha1sum initial commit
+
+                        $~/git_project: git reflog
+
+                        sha1sum HEAD@{0}: reset: moving HEAD to HEAD~2
+                        sha1sum HEAD@{1}: commit: third
+                        sha1sum HEAD@{2}: commit: second
+                        sha1sum ( HEAD -> master ) HEAD@{3}: commit (initial): Intial commit
+
+                        $~/git_project: git reset --soft HEAD@{1}
+
+                        $~/git_project: git log
+
+                        sha1sum ( HEAD -> master) third commit
+                        sha1sum second commit
+                        sha1sum first commit
+                        sha1sum initial commit
+                        ```
+                    </section>
+                    <section data-markdown>
+                        ### Undeleting a deleted branch
+
+                        ```bash
+                        $~/git_project: git branch --list
+                        * master
+                        my_branch
+                        $~/git_project: git branch -D my_branch
+                        $~/git_project: git branch --list
+                        * master
+                        $~/git_project: git reflog
+                        ...
+                        ...
+                        45b7b49 HEAD@{1}: commit: commit message
+                        $~/git_project: git checkout -b my_branch HEAD@{1}
+                        ```
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### What Files is git tracking
+
+                        * `git ls-files`
+
+                        ```bash
+                        $~/git_project: git ls-files
+                        file1.txt
+                        file2.txt
+                        file3.txt
+                        file4.txt
+                        ```
+                    </section>
+
+                    <section data-markdown>
+                        ### Untracking a file
+
+                        * `git rm`
+
+                        ```bash
+                        $~/git_project: git rm --cached file1.txt
+                        $~/git_project: git ls-files
+                        file2.txt
+                        file3.txt
+                        file4.txt
+                        $~/git_project: git status
+                        ...
+                        ...
+                        ...
+                        Untracked Files:
+                        file1.txt
+                        ```
+                    </section>
+
+                    <section>
+
+                        <header><u>Making Git to shutup about untracked files</u></header>
+
+                        <img height="400" data-src="shutup.jpeg" />
+
+                    </section>
+
+                    <section>
+                        <p>You can tell git to stop showing you changes in a file and/or files that are currently untracked</p>
+                        <p data-markdown> * `.gitignore` </p>
+
+                        <div data-markdown>
+                            ```bash
+                            $~/git_project: nano .gitignore
+                            file1.txt
+                            file2.txt
+                            $~/git_project: git add .gitignore
+                            $~/git_project: git commit --message="ignored some files"
+                            ```
+                        </div>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        ### Cloning a repository
+                        Cloning a repository has to do with telling git to go to a remote repository get all the commits of that repository
+                        and make a local copy of the repository on your machine
+
+                        * `git clone https://repository_url`
+
+                        ```bash
+                        $~/git_project: git clone https://github.com/git/git
+                        ```
+                    </section>
+                </section>
+                
+                <section>
+                    <header> <u>DEMO</u> </header>
+                    <img data-src="demo.jpeg"/>
+                </section>
+
+                <section>
+                    <section>
+                        <header> <u> GIT GUI ( moving away from the terminal ) </u> </header>
+                        <img height="400" data-src="commandline.jpeg"/>
+                    </section>
+                </section>
+
+                <section>
+                    <header> <u> RESOURCES </u> </header>
+
+                    <section>
+                        <p> DOWNLOAD GIT </p>
+                        <ul>
+                            <li>
+                                <a href="https://git-scm.com/"> Download Git ( all platforms executable )</a>
+                            </li>
+                            <li>
+                                <a data-markdown> `apt-get update && apt-get install git ` ( commandline for linux ) </a>
+                            </li>
+                            <li>
+                                <a href="https://git-scm.com/downloads/guis"> Git Gui clients </a>
+                            </li>
+                        </ul>
+                    </section>
+
+
+                    <section>
+                        <p> BOOKS </p>
+                        <ul>
+                            <li>
+                                <a href="https://git-scm.com/book/"> Pro Git ( Official book on git ) </a>
+                            </li>
+                            <li>
+                                <a href="https://www.manning.com/books/learn-git-in-a-month-of-lunches">Learn git in month of lunches</a>
+                            </li>
+                            <li>
+                                <a href="https://www.manning.com/books/git-in-practice">Git in Practice</a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <header> <u> Videos </u> </header>
+                        <ul class="resource-links">
+                            <li>
+                                <a href="https://www.youtube.com/playlist?list=PL4cUxeGkcC9goXbgTDQ0n_4TBzOO0ocPR">Net Ninja</a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=HVsySz-h9r4">Corey Schafer</a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=wBp0Rb-ZJak">Joe Collins ( Commandline ) </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/watch?v=YHFzr-akOas&list=PLS1QulWo1RIb9WVQGJ_vh-RQusbZgO_As">Programming Knowledge ( Commandline ) </a>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <header> <u> Online Tutorials </u> </header>
+                        <ul class="resource-links">
+                            <li>
+                                <a href="https://www.codecademy.com/learn/learn-git">Codecademy ( Learn Git ) </a>
+                            </li>
+                            <li>
+                                <a href="https://www.tutorialspoint.com/git/">Tutorials Point </a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/jlord/git-it-electron/releases">Git-It</a>
+                            </li>
+                            <li>
+                                <a href="https://services.github.com/on-demand/downloads/github-git-cheat-sheet/">Git Cheat Sheet</a>
+                            </li>
+                        </ul>
+
+                    </section>
+
+                </section>
+
+                <section>
+                    <header> <u> QUESTION </u> </header>
+                    <img height="400" data-src="question.jpeg"/>
+                </section>
+                <section>
+                    <section>
+                        <header>To get in touch with me </header>
+                        <p>Gmail: <a href="#"> zombieleetnca@gmail.com </a> </p>
+                        <p>Twitter: <a href="https://twitter.com/VOsikwemhe"> @VOsikwemhe </a> </p>
+                        <p>Github: <a href="https://github.com/zombieleet"> @zombieleet </a> </p>
+                    </section>
+                    <section>
+                        <header> <u> THE END </u> </header>
+                        <img height="500" data-src="version_control_all_things.jpeg"/>
+                    </section>
+                </section>
+	    </div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+	 // More info about config & dependencies:
+	 // - https://github.com/hakimel/reveal.js#configuration
+	 // - https://github.com/hakimel/reveal.js#dependencies
+	 Reveal.initialize({
+	     dependencies: [
+		 { src: 'plugin/markdown/marked.js' },
+		 { src: 'plugin/markdown/markdown.js' },
+		 { src: 'plugin/notes/notes.js', async: true },
+		 { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+	     ]
+	 });
+
+         Reveal.configure({
+             slideNumber: true,
+         });
+	</script>
+    </body>
+</html>

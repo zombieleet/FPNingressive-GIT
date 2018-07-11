@@ -1,0 +1,15 @@
+li {
+    list-style-type: decimal;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.resource-links {
+    margin-left: 0;
+}
+
+.resource-links li {
+    font-size: 1em;
+}
