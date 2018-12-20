@@ -150,15 +150,15 @@
                 <section>
                     <section>
                         <header id="repository"> <u> Repository </u> </header>
-                        <p>A magical location where your version controlled contents are stored</p>
+                        <p>A magical location where version controlled contents are stored</p>
                     </section>
                     <section>
                         <header> <u>Local Repository</u> </header>
-                        <p>This are repository that exits within your host computer</p>
+                        <p>This are repository that exits within the host computer</p>
                     </section>
                     <section>
                         <header> <u>Remote Repository</u> </header>
-                        <p>This are repository that does not exists on your host computer</p>
+                        <p>This are repository that does not exists on the host computer</p>
                         <p>Often, network connection is required to connect to this repository</p>
                     </section>
                 </section>
@@ -168,7 +168,7 @@
                 </section>
                 <section>
                     <header id="commit"> <u>Commit</u> </header>
-                    <p>Commit have to do with saving the changes that occur in your <a href="#working-directory"> working directory </a> </p>
+                    <p>Commit have to do with saving the changes that occur in the <a href="#working-directory"> working directory </a> </p>
                 </section>
 
                 <section>
@@ -268,7 +268,7 @@
                 <section>
                     <section data-markdown>
                         ### Commits logs
-                        With git you can also view all your commits logs.
+                        With git you can also view all commits logs.
                         Commits logs shows you a detailed information about the commits you and other developers have made
 
                         * `git log`
@@ -363,8 +363,7 @@
                 <section>
                     <section data-markdown>
                         ### [Branch](#branch)
-                        With branching you can create a different development path without messing up
-                        your working directory or repo. Branching is normally used to test out things that might
+                        With branching you can create a different development path without messing up a stable branch. Branching is normally used to test out things that might
                         work or might not work.
 
                         * `git branch`
@@ -518,9 +517,9 @@
                     </section>
 
                     <section data-markdown>
-                        ### Fetching commits from a remote repository
-                        Commits can be fetched from a remote repository in situations were a collaborator updates
-                        the remote repo, they will be need for other collaborators to fetch those changes from the remote repo
+                        ### Pulling commits from a remote repository
+                        Commits can be pulled from a remote repository in situations were a collaborator updates
+                        the remote repo, they will be need for other collaborators to pull those changes from the remote repo
                         to their own local repo
 
                         ```bash
@@ -536,7 +535,7 @@
                     <section data-markdown>
                         ### Deleting a remote branch
                         If a remote branch is no longer needed, it is advisable you delete it, but you have to make sure
-                        that all the commits in the remote repo is already fetched into the local repo
+                        that all the commits in the remote repo is already pulled into the local repo
 
                         ```bash
                         $~/git_project: git branch --remotes
@@ -558,7 +557,7 @@
 
                 <section>
                     <section data-markdown>
-                        ### Reseting Your Changes
+                        ### Reseting Changes
                         Reset helps you to revert back to previous commits.
                         Resets can be of three types
 
@@ -630,7 +629,7 @@
                     <section data-markdown>
                         ### Mixed reset
                         It moves the HEAD pointer to a previous commit without affecting the working tree.
-                        A mixed reset only affects the commited contents and the staging area. It affects the staging area
+                        A mixed reset only affects the HEAD pointer and the staging area. It affects the staging area
                         by unstaging all staged files
 
                         ```bash
@@ -683,8 +682,8 @@
 
                     <section data-markdown>
                         ### Hard Reset
-                        Hard reset changes your working tree, unstages your staged file, and moves your head pointer
-                        to a previous commit. Uncommited changes in your working tree goes missing ( permanently )
+                        Hard reset changes the working tree, unstages staged file, and moves the HEAD pointer
+                        to a previous commit. Uncommited changes in the working tree goes missing ( permanently )
 
                         [![DON'T TRY THIS AT HOME](dont.gif)]()
                     </section>
